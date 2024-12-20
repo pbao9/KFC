@@ -33,10 +33,10 @@
             <div class="row justify-content-center">
                 <div class="col-md-9 text-center">
                     <!-- <p id="result" class="alert alert-success"></p> -->
-                    <div class="card">
+                    <div class="card mb-3">
                         <div class="card-header justify-content-center bg-danger-lt">
                             <div class="card-title">
-                                <h1 class="text-center">Random Number Generator</h1>
+                                <h1 class="text-center text-uppercase">Random Number Generator</h1>
                             </div>
                         </div>
                         <div class="card-body">
@@ -49,12 +49,19 @@
                                 <br />
                                 <button id="generateBtn" class="btn btn-danger">Generate Random</button>
                             </div>
-
                         </div>
                     </div>
 
-
-                    <div id="tableContainer"></div>
+                    <div class="card result-card" style="display: none;">
+                        <div class="card-header justify-content-center bg-danger-lt">
+                            <div class="card-title text-uppercase">
+                                <h1> Các số random còn lại!</h1>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="tableContainer" class="grid-container"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -62,6 +69,9 @@
     </div>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/js/tabler.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

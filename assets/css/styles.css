@@ -2,17 +2,29 @@
   primary-color: #c41230;
 } */
 
-table {
-  border-collapse: collapse;
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Chia 4 cột */
+  gap: 10px;
   margin-top: 20px;
-  width: 100%;
-  border-radius: 10px !important;
+  justify-content: center;
 }
-th,
-td {
-  border: 1px solid var(--tblr-border-color);
-  background-color: white;
+.grid-item {
   padding: 10px;
   text-align: center;
-  text-transform: uppercase;
+  border: 1px solid var(--tblr-border-color);
+  background-color: white;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: opacity 0.5s, transform 0.5s;
+}
+.grid-item.fade-out {
+  opacity: 0;
+  transform: scale(0.9);
+}
+input,
+button {
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
 }
