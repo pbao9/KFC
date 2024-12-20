@@ -1,3 +1,16 @@
-:root {
+/* :root {
   primary-color: #c41230;
+} */
+
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+  width: 100%;
+}
+th,
+td {
+  border: 1px dashed black;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
 }
