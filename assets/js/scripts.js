@@ -59,6 +59,5 @@ function generateRandom() {
     text: `Số random: ${randomNumber}`,
   });
 
-  document.getElementById("result").innerText = `Số random: ${randomNumber}`;
   console.log(usedNumbers); // Debug: Xem danh sách số đã random
 }
