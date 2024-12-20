@@ -2,41 +2,63 @@ document
   .getElementById("generateBtn")
   .addEventListener("click", generateRandom);
 
-let lastResult = null; // Lưu trữ kết quả trước đó
+let usedNumbers = []; // Lưu trữ các số đã random
+let lastResult = null; // Kết quả random trước đó
 
 function generateRandom() {
   const min = parseInt(document.getElementById("min").value);
   const max = parseInt(document.getElementById("max").value);
 
   if (isNaN(min) || isNaN(max)) {
-    alert("Please enter valid numbers for Min and Max.");
+    Swal.fire({
+      icon: "error",
+      title: "Lỗi đầu vào",
+      text: "Vui lòng nhập số hợp lệ cho Min và Max.",
+    });
     return;
   }
 
   if (min >= max) {
-    alert("Min should be less than Max.");
+    Swal.fire({
+      icon: "warning",
+      title: "Khoảng không hợp lệ",
+      text: "Giá trị Min phải nhỏ hơn Max.",
+    });
     return;
   }
 
-  const range = max - min + 1; // Tổng số kết quả có thể xảy ra
+  const range = max - min + 1;
 
-  if (range === 1) {
-    alert(
-      "The range only contains one number, so it cannot generate unique random numbers."
-    );
+  // Nếu tất cả các số trong khoảng đã được random
+  if (usedNumbers.length >= range) {
+    Swal.fire({
+      icon: "info",
+      title: "Đã random hết số",
+      text: "Tất cả các số trong khoảng đã được tạo.",
+      confirmButtonText: "Tải lại trang",
+      showCancelButton: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        location.reload(); // Reload lại trang
+      }
+    });
     return;
   }
 
-  // Random không trùng
   let randomNumber;
   do {
     randomNumber = Math.floor(Math.random() * range) + min;
-  } while (randomNumber === lastResult && range > 1);
+  } while (usedNumbers.includes(randomNumber));
 
-  lastResult = randomNumber; // Cập nhật kết quả trước đó
-  console.log(lastResult);
+  usedNumbers.push(randomNumber); // Thêm số vào danh sách các số đã random
+  lastResult = randomNumber;
 
-  document.getElementById(
-    "result"
-  ).innerText = `Random Number: ${randomNumber}`;
+  Swal.fire({
+    icon: "success",
+    title: "Kết quả",
+    text: `Số random: ${randomNumber}`,
+  });
+
+  document.getElementById("result").innerText = `Số random: ${randomNumber}`;
+  console.log(usedNumbers); // Debug: Xem danh sách số đã random
 }
